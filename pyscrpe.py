@@ -9,7 +9,7 @@ try:
     get_code=url.read()#Ectracting the html code received from the server------------
     soup=BeautifulSoup(get_code,'lxml')#using BeautifulSoup for parsing the html data or content that we want to use------------
     f=open("C://Users/vshan/Desktop/Details.csv","a+")#Opening and writing the Head contents to the file--------------------
-    f.write("SCHOOL NAME / CODE / ADDRESS                   CONTACT DETAILS                         CATEGORIES              TYPE                            NAME OF THE HEAD")
+    f.write("SCHOOL NAME / CODE / ADDRESS               CONTACT DETAILS                         CATEGORIES                TYPE                              NAME OF THE HEAD")
     f.write('\n\n')
     f.close()#file close ------------
     for i in range(1,len(soup.find_all('tr'))):
@@ -31,8 +31,11 @@ try:
             #----------------------------------------------Extracting Types-----------------------------------------------------------------
                 j=(soup.find_all('tr')[i].find_all('div')[-1:][0].text)[0:4];print(j)
                 k=(soup.find_all('tr')[i].find_all('div')[-1:][0].text)[4:];print(k)
+                y=(soup.find_all('tr')[1].find_all('td')[2].text.strip()[-15:]).strip();print(y)
             #---------------------------------------------------Extracting NAME OF THE HEAD------------------------------------------------------
-                m=(soup.find_all('tr')[i].find_all('td')[-1:][0].text);print(m)#It might throw an UnicodeEncodeError due to encoding error 
+                print((soup.find_all('tr')[i].find_all('td')[-1:][0]).text)
+                m=(soup.find_all('tr')[i].find_all('td')[-1:][0]).text.encode('utf-8');#It might throw an UnicodeEncodeError due to encoding error
+                m.decode('utf-8')
                 
                 
             else:
@@ -47,22 +50,24 @@ try:
         #---------------------------------------------Extracting nad printing Types---------------------------------------------
                 j=soup.find_all('tr')[i].find_all('div')[-1:][0].text[0:4];print(j)
                 k=soup.find_all('tr')[i].find_all('div')[-1:][0].text[4:];print(k)
+                y=(soup.find_all('tr')[1].find_all('td')[2].text.strip()[-15:]).strip();print(y)
         #-------------------------------------------Extracting NAME OF HEAD----------------------------------------------
-                m=(soup.find_all('tr')[i].find_all('td')[-1:][0].text);print(m)#It is possible that name must not be properly encoded it might throw an UnicodeEncodeError
-        
+                print((soup.find_all('tr')[i].find_all('td')[-1:][0]).text)
+                m=(soup.find_all('tr')[i].find_all('td')[-1:][0]).text.encode('utf-8')#It is possible that name must not be properly encoded it might throw an UnicodeEncodeError
+                m.decode('utf-8')
         
             
         except AttributeError:#Handelling AttributeError---------------------
             continue
         except UnicodeEncodeError:#Handelling UnicodeEncodeError   and decoding for the better enreichment of the data-----------
-            m=(soup.find_all('tr')[i].find_all('td')[-1:][0].text)
-            m=m.decode('utf-8')
-            print(m)#printing the properly Decoded data---------------------
+            m=(soup.find_all('tr')[i].find_all('td')[-1:][0]).text.encode('utf-8')
+            (m.decode('utf-8'))
+            #printing the properly Decoded data---------------------
     #-------------------------------------Writing the content to the Csv file---------------------------------------
         f=open("C://Users/vshan/Desktop/Details.csv","a+")#location of the file can be changed according to the handeler--------------------
-        f.write(a);f.write('                                                      ');f.write(d);f.write('                                      ');f.write(h);f.write('                                    ');f.write(j);f.write('                                         ');f.write(m);f.write('\n')
+        f.write(a);f.write('                                                      ');f.write(d);f.write('                                      ');f.write(h);f.write('                                    ');f.write(j);f.write('                                         ');f.write(m.decode('utf-8'));f.write('\n')
         f.write(b);f.write('                                            ');f.write(e);f.write('                                       ');f.write(i1);f.write('                                        ');f.write(k);f.write('                                        ');f.write('\n');
-        f.write('                                                                 ');f.write(f1);f.write('\n')
+        f.write('                                                                 ');f.write(f1);f.write('         ');f.write(y);f.write('\n')      
         f.write('                                                                  ');f.write(g);f.write('\n')
         f.write(c);f.write('\n\n\n\n')
         f.close()#file close----------
