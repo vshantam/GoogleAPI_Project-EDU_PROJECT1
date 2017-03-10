@@ -55,7 +55,7 @@ try:
         except AttributeError:#Handelling AttributeError---------------------
             continue
         except UnicodeEncodeError:#Handelling UnicodeEncodeError   and decoding for the better enreichment of the data-----------
-            m=(soup.find_all('tr')[i].find_all('td')[-1:][0].text).encode('utf-8')
+            m=(soup.find_all('tr')[i].find_all('td')[-1:][0].text)
             m=m.decode('utf-8')
             print(m)#printing the properly Decoded data---------------------
     #-------------------------------------Writing the content to the Csv file---------------------------------------
