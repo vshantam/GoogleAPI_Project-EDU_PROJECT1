@@ -31,7 +31,7 @@ try:
             #----------------------------------------------Extracting Types-----------------------------------------------------------------
                 j=(soup.find_all('tr')[i].find_all('div')[-1:][0].text)[0:4];print(j)
                 k=(soup.find_all('tr')[i].find_all('div')[-1:][0].text)[4:];print(k)
-                y=(soup.find_all('tr')[1].find_all('td')[2].text.strip()[-15:]).strip();print(y)
+                y=(soup.find_all('tr')[i].find_all('td')[2].text.strip()[-15:]).strip();print(y)
             #---------------------------------------------------Extracting NAME OF THE HEAD------------------------------------------------------
                 print((soup.find_all('tr')[i].find_all('td')[-1:][0]).text)
                 m=(soup.find_all('tr')[i].find_all('td')[-1:][0]).text.encode('utf-8');#It might throw an UnicodeEncodeError due to encoding error
@@ -50,7 +50,7 @@ try:
         #---------------------------------------------Extracting nad printing Types---------------------------------------------
                 j=soup.find_all('tr')[i].find_all('div')[-1:][0].text[0:4];print(j)
                 k=soup.find_all('tr')[i].find_all('div')[-1:][0].text[4:];print(k)
-                y=(soup.find_all('tr')[1].find_all('td')[2].text.strip()[-15:]).strip();print(y)
+                y=(soup.find_all('tr')[i].find_all('td')[2].text.strip()[-15:]).strip();print(y)
         #-------------------------------------------Extracting NAME OF HEAD----------------------------------------------
                 print((soup.find_all('tr')[i].find_all('td')[-1:][0]).text)
                 m=(soup.find_all('tr')[i].find_all('td')[-1:][0]).text.encode('utf-8')#It is possible that name must not be properly encoded it might throw an UnicodeEncodeError
