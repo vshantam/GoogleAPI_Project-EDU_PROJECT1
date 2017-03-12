@@ -21,7 +21,7 @@ try:
         try:
             if i<10:
     #-----------------------------------------------Extracting the contact informations---------------------------------------------------
-                contact1=(soup.find_all('tr')[1].find_all('td')[1].text[3:17].strip());print(contact1)
+                contact1=(soup.find_all('tr')[i].find_all('td')[1].text[3:17].strip());print(contact1)
                 contact2=(soup.find_all('tr')[i].find("div",{"id":("ctl00_ctl00_Cphcontent_Cphleftcontent_rptsearch_ctl0"+str(i-1)+"_Div1")}).text[3:]);print(contact2)
                 contact3=(soup.find_all('tr')[i].find("div",{"id":("ctl00_ctl00_Cphcontent_Cphleftcontent_rptsearch_ctl0"+str(i-1)+"_Div2")}).text[3:]);print(contact3)
                 email=(soup.find_all('tr')[i].find("div",{"id":("ctl00_ctl00_Cphcontent_Cphleftcontent_rptsearch_ctl0"+str(i-1)+"_Div3")}).text[3:]);print(email)
@@ -39,7 +39,7 @@ try:
                 
             else:
     #----------------------------------------------------Extracting Contact Informations and prnting----------------------------------
-                contact1=(soup.find_all('tr')[1].find_all('td')[1].text[3:17].strip());print(contact1)
+                contact1=(soup.find_all('tr')[i].find_all('td')[1].text[3:17].strip());print(contact1)
                 contact2=(soup.find_all('tr')[i].find("div",{"id":("ctl00_ctl00_Cphcontent_Cphleftcontent_rptsearch_ctl"+str(i-1)+"_Div1")}).text[3:]);print(contact2)
                 contact3=(soup.find_all('tr')[i].find("div",{"id":("ctl00_ctl00_Cphcontent_Cphleftcontent_rptsearch_ctl"+str(i-1)+"_Div2")}).text[3:]);print(contact3)
                 email=(soup.find_all('tr')[i].find("div",{"id":("ctl00_ctl00_Cphcontent_Cphleftcontent_rptsearch_ctl"+str(i-1)+"_Div3")}).text[3:]);print(email)
