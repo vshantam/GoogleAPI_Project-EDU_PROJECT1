@@ -290,7 +290,7 @@ def main():
         logging.info('Changed the file Extension to specific format')
         # printng the data presents in the file
         obj = GMAP_ID()
-        f=open("","a+")#opensthe output file.
+        f=open("","a+")#opens the output file.
         for i in range(count):#looping through all the files one by one and gets the required data.
             with open(os.listdir()[i],"r") as files:
                 csv_reader=csv.reader(files,delimiter=",")#setting the delimeter for csv file i.e ","
@@ -299,10 +299,8 @@ def main():
                 datas=list(csv.DictReader(files,dialect=dialect))#stores the rows in dictionary format for accessing keys and values properly
                 for row in (datas):
                     resp = obj.get_id(row)#calling for get_id() for place_ids.
-                    print(resp['place_id'])  				                                                                                                                                                                                                                                                       			    f.write(str(resp['place_id']));f.write('\n')#writes the output data to the csv file.
-                    
-                    
-
+                    print(resp['place_id'])
+                    f.write(str(resp['place_id']));f.write('\n')#writes the output data to the csv file.
             f.close();
     except Exception as e:#exceptional handeling
         print(str(e))
@@ -310,6 +308,3 @@ def main():
 
 if __name__=='__main__':
     main()
-        
-        
-            
