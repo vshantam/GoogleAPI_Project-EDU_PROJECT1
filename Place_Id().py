@@ -16,12 +16,12 @@ KEYS = [
         'AIzaSyCq7QLuMkfcm-68JL95Au5x9Vc_0qCp8iU'   #Shardul
 ]
 
-class GMAP_ID:
+class GMAP_ID(object):
     def __init__(self):
         self.GOOGLE_API_KEYS = KEYS
         self.key_index=0
-        self.required_fields = ['Name', 'City', 'State',]
-
+        self.required_fields = ['Name', 'City', 'State',]       
+	
     def graceful_request(self,url):
         chain_count = 0
         while True:
