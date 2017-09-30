@@ -304,7 +304,6 @@ def main():
             f.close();
     except Exception as e:#exceptional handeling
         print(str(e))
-        pass
 
 if __name__=='__main__':
     main()
