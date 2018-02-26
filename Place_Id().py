@@ -278,26 +278,32 @@ class GMAP_ID(object):
                 }
 
 def main():
+	
     try:
         dir=""#locations of your files.
         os.chdir(dir)#changing your directory location to where the file is stored.
         count=len(os.listdir())
         print("There are {} Datasets presents in the directory".format(count))
+	
         required_extension='.csv'
 	  # coverting files to the specific format extensions
         for i in range(count):
             os.rename(os.listdir()[i],(os.path.splitext(os.listdir()[i])[0])+str(required_extension))
         logging.info('Changed the file Extension to specific format')
+	
         # printng the data presents in the file
         obj = GMAP_ID()
         f=open("","a+")#opens the output file.
+	
         for i in range(count):#looping through all the files one by one and gets the required data.
+		
             with open(os.listdir()[i],"r") as files:
                 csv_reader=csv.reader(files,delimiter=",")#setting the delimeter for csv file i.e ","
                 dialect=csv.Sniffer().sniff(files.readline())
                 files.seek(0)
                 datas=list(csv.DictReader(files,dialect=dialect))#stores the rows in dictionary format for accessing keys and values properly
                 for row in (datas):
+			
                     resp = obj.get_id(row)#calling for get_id() for place_ids.
                     print(resp['place_id'])
                     f.write(str(resp['place_id']));f.write('\n')#writes the output data to the csv file.
@@ -306,4 +312,5 @@ def main():
         print(str(e))
 
 if __name__=='__main__':
+	
     main()
