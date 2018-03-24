@@ -8,7 +8,7 @@ With the help of google map api we can scrape the place id of certain places whi
 # Google Api key
 to use google map api you need to get the api key.
 
-you van use the below link to generate your own api key :
+you can use the below link to generate your own api key :
   
     https://developers.google.com/maps/documentation/javascript/get-api-key
     
